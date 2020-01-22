@@ -4,7 +4,9 @@ public class BasicArithmeticFactory {
 
     public static OfpBasicArithmetic getBasicArithmetic(OfpArithmeticEnum oae) throws Exception {
         if (oae == OfpArithmeticEnum.SUM) {
-            return new Sum();
+                return new Sum();
+        } else if (oae == OfpArithmeticEnum.DIFF) {
+            return new Diff();
         } else {
             throw new Exception("Basic Arithmetic not recognized");
         }
