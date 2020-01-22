@@ -1,6 +1,6 @@
 package it.md.ofp;
 
-public class Sum implements ofpBasicArithmetic {
+public class Sum implements OfpBasicArithmetic {
 
     @Override
     public OldPound calculate(OldPound op_1, OldPound op_2) {
@@ -14,6 +14,6 @@ public class Sum implements ofpBasicArithmetic {
         int shillingsToPounds = (shillings - actualShillings) / 20;
         // calculate pounds
         int pounds = op_1.getPounds() + op_2.getPounds() + shillingsToPounds;
-        return new OldPound(pounds, shillings, pence);
+        return new OldPound(pounds, actualShillings, actualPence);
     }
 }
