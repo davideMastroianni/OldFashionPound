@@ -9,13 +9,13 @@ import lombok.Setter;
 public class OldPound {
 
     @Setter @Getter
-    private Integer pounds;
+    private int pounds;
     @Setter @Getter
-    private Integer shillings;
+    private int shillings;
     @Setter @Getter
-    private Integer pence;
+    private int pence;
 
-    public OldPound(Integer pounds, Integer shillings, Integer pence) {
+    public OldPound(int pounds, int shillings, int pence) {
         this.pounds = pounds;
         this.shillings = shillings;
         this.pence = pence;

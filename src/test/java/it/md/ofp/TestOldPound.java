@@ -8,9 +8,9 @@ public class TestOldPound {
     @Test
     public void toString_shouldReturnCorrectString() {
         // SETUP
-        Integer pounds = 10;
-        Integer shillings = 5;
-        Integer pence = 18;
+        int pounds = 10;
+        int shillings = 5;
+        int pence = 18;
         OldPound sut = new OldPound(pounds, shillings, pence);
         // ACT
         String parsedOldPound = sut.toString();
