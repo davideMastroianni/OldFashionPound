@@ -33,13 +33,13 @@ public class OldPound {
         } else {
             moneyTalk = pence + "d";
         }
-        if (remainder != null) {
+        if (remainder != null || remainder.isZero()) {
             moneyTalk += " (" + remainder.toString() + ")";
         }
         return moneyTalk;
     }
 
-    public boolean isEmpty() {
+    public boolean isZero() {
         return this.pounds == 0 && this.shillings == 0 && this.pence == 0;
     }
 
