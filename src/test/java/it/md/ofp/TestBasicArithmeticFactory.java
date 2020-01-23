@@ -29,15 +29,27 @@ public class TestBasicArithmeticFactory {
     }
 
     @Test
-    public void getBasicArithmetic_shouldThrowException_withWrongEnum() {
+    public void getBasicArithmeticForSumAndDiff_shouldThrowException_withWrongEnum() {
         // SETUP
-        OfpArithmeticEnum operator = mock(OfpArithmeticEnum.class);
+        OfpArithmeticEnum operator = OfpArithmeticEnum.DIV;
         OldPound op_1 = mock(OldPound.class);
         OldPound op_2 = mock(OldPound.class);
         // ACT & VERIFY
         assertThatThrownBy(() -> {
-            OfpBasicArithmetic basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
-        }).isInstanceOf(Exception.class).hasMessage("Basic Arithmetic not recognized");
+            BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
+        }).isInstanceOf(Exception.class).hasMessage("Operator MUL and DIV MUST have left term of type OldPound and right term of type int");
+    }
+
+    @Test
+    public void getBasicArithmeticForMulAndDiv_shouldThrowException_withWrongEnum() {
+        // SETUP
+        OfpArithmeticEnum operator = OfpArithmeticEnum.SUM;
+        OldPound op_1 = mock(OldPound.class);
+        int op_2 = 1;
+        // ACT & VERIFY
+        assertThatThrownBy(() -> {
+            BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
+        }).isInstanceOf(Exception.class).hasMessage("Operator SUM and DIFF want both terms to be type OldPound");
     }
 
 }
