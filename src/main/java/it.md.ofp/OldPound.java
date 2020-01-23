@@ -41,6 +41,13 @@ public class OldPound {
         return moneyTalk;
     }
 
+    /**
+     * Transform given int value into String.
+     * Value become negative if attribute isDebt is true.
+     * Zero value has no sign.
+     * @param value int
+     * @return boolean
+     */
     private String getValueWithSign(int value) {
         if (this.isDebt && value != 0) {
             return "-"+value;
@@ -50,10 +57,20 @@ public class OldPound {
 
     }
 
+    /**
+     * Check if all primary attributes (pounds, shillings and pence) have value zero.
+     * @return boolean
+     */
     public boolean isZero() {
         return this.pounds == 0 && this.shillings == 0 && this.pence == 0;
     }
 
+    /**
+     * Change pence into shillings and shillings into pounds.
+     * Based on conversion tariff of pre-1970 UK
+     * 12 pence -> 1 shillings
+     * 20 shillings -> 1 pound
+     */
     public void optimizeValues() {
         int actualPence = this.pence % 12;
         int penceToShillings = this.pence / 12;
