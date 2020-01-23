@@ -27,6 +27,16 @@ public class TestPriceArithmetic {
     }
 
     @Test
+    public void calculateExpression_shouldDiff_withDiffExpressionAndRepresentNegative() {
+        // SETUP
+        String[] rawExpression = {"5p", "17s", "8d", "-", "5p", "18s", "8d"};
+        // ACT
+        String result = PriceArithmetic.calculateExpressionFromStandardInput(rawExpression);
+        // VERIFY
+        assertThat(result).isEqualTo("0d (-1s 0d)");
+    }
+
+    @Test
     public void calculateExpression_shouldMul_withMulExpression() {
         // SETUP
         String[] rawExpression = {"5p", "17s", "8d", "*", "2"};
