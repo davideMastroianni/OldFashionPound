@@ -16,6 +16,8 @@ public class OldPound {
     private int pence;
     @Setter @Getter
     private OldPound remainder;
+    @Setter @Getter
+    private boolean isDebt = false;
 
     public OldPound(int pounds, int shillings, int pence) {
         this.pounds = pounds;
@@ -27,16 +29,25 @@ public class OldPound {
     public String toString() {
         String moneyTalk;
         if (this.pounds > 0) {
-            moneyTalk = pounds + "p " + shillings + "s " + pence + "d";
+            moneyTalk = getValueWithSign(pounds) + "p " + getValueWithSign(shillings) + "s " + getValueWithSign(pence) + "d";
         } else if (this.shillings > 0) {
-            moneyTalk = shillings + "s " + pence + "d";
+            moneyTalk = getValueWithSign(shillings) + "s " + getValueWithSign(pence) + "d";
         } else {
-            moneyTalk = pence + "d";
+            moneyTalk = getValueWithSign(pence) + "d";
         }
         if (remainder != null && !remainder.isZero()) {
             moneyTalk += " (" + remainder.toString() + ")";
         }
         return moneyTalk;
+    }
+
+    private String getValueWithSign(int value) {
+        if (this.isDebt && value != 0) {
+            return "-"+value;
+        } else {
+            return Integer.toString(value);
+        }
+
     }
 
     public boolean isZero() {
