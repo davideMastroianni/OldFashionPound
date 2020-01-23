@@ -1,0 +1,6 @@
+anifest-Version: 1.0
+Built-By: mkyong
+Build-Jdk: 1.6.0_35
+Created-By: Apache Maven
+Main-Class: it.md.ofp.PriceArithmetic
+Archiver-Version: Plexus Archiver
