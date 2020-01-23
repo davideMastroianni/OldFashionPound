@@ -1,4 +1,4 @@
-package it.md.ofp;
+package it.md.ofp.basicArithmetic;
 
 public enum OfpArithmeticEnum {
     SUM,
