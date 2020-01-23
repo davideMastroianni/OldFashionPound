@@ -2,6 +2,9 @@ package it.md.ofp.basicArithmetic;
 
 import it.md.ofp.OldPound;
 
+/**
+ * MISSION: provide an implementation of multiplication operation between an OldPound objects and a int.
+ */
 public class Mul implements OfpBasicArithmetic {
 
     private OldPound op_1;

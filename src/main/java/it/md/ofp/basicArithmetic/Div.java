@@ -2,6 +2,10 @@ package it.md.ofp.basicArithmetic;
 
 import it.md.ofp.OldPound;
 
+/**
+ * MISSION: provide an implementation of division operation between an OldPound object and a int.
+ * Any remainder value is stored as remainder into OldPound result object.
+ */
 public class Div implements OfpBasicArithmetic {
 
     private OldPound op_1;

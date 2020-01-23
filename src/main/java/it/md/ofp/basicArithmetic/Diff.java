@@ -4,6 +4,10 @@ import it.md.ofp.OldPound;
 
 import static java.lang.StrictMath.abs;
 
+/**
+ * MISSION: provide an implementation of difference operation between two OldPound objects.
+ * Any negative values are stored as debt remainder into OldPound result object.
+ */
 public class Diff implements OfpBasicArithmetic {
 
     private OldPound op_1;
