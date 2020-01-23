@@ -39,9 +39,11 @@ public class Diff implements OfpBasicArithmetic {
         }
         OldPound result = new OldPound(0, 0, pence);
         result.optimizeValues();
-        OldPound reminder = new OldPound(0, 0, remainderPence);
-        reminder.optimizeValues();
-        result.setRemainder(reminder);
+        if (remainderPence > 0) {
+            OldPound reminder = new OldPound(0, 0, remainderPence);
+            reminder.optimizeValues();
+            result.setRemainder(reminder);
+        }
         return result;
     }
 }
