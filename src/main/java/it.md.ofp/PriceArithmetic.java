@@ -27,6 +27,7 @@ public class PriceArithmetic {
             OldPound result = basicArithmetic.calculate();
             return result.toString();
         } catch (Exception e) {
+            System.out.println("Calculation failed.");
             return e.getMessage();
         }
     }

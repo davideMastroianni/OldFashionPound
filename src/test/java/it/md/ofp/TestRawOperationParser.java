@@ -101,4 +101,15 @@ public class TestRawOperationParser {
                 .isInstanceOf(Exception.class)
                 .hasMessage("Raw operation is malformed for operator / and *. It required to be in this form \"Xp Ys Zd [+|-] Ap Bs Cd\"");
     }
+
+    @Test
+    public void parse_shouldThrowException_withDiv_andFloat() {
+        // SETUP
+        String[] rawOperation = {"5p", "17s", "8d", "/", "2,2"};
+        RawOperationParser sut = new RawOperationParser(rawOperation);
+        // ACT & VERIFY
+        assertThatThrownBy(sut::parse)
+                .isInstanceOf(Exception.class)
+                .hasMessage("For input string: \"2,2\"");
+    }
 }
