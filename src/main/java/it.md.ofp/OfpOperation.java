@@ -1,18 +1,16 @@
 package it.md.ofp;
 
-public class OfpOperation {
+import it.md.ofp.basicArithmetic.OfpBasicArithmetic;
 
-    private OldPound op_1;
-    private OldPound op_2;
+class OfpOperation {
+
     private OfpBasicArithmetic basicArithmetic;
 
-    public OfpOperation(OldPound op_1, OldPound op_2, OfpBasicArithmetic basicArithmetic) {
-        this.op_1 = op_1;
-        this.op_2 = op_2;
+    OfpOperation(OfpBasicArithmetic basicArithmetic) {
         this.basicArithmetic = basicArithmetic;
     }
 
-    public OldPound calculate() {
-        return this.basicArithmetic.calculate(this.op_1, this.op_2);
+    OldPound calculate() {
+        return this.basicArithmetic.calculate();
     }
 }
