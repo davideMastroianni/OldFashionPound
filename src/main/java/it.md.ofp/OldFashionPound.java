@@ -1,22 +1,34 @@
 package it.md.ofp;
 
+import it.md.ofp.basicArithmetic.BasicArithmeticFactory;
+import it.md.ofp.basicArithmetic.OfpArithmeticEnum;
+import it.md.ofp.basicArithmetic.OfpBasicArithmetic;
+
 public class OldFashionPound {
 
     public static void main(String[] args) {
+        String result = calculateExpression(args);
+        System.out.println(result);
+    }
+
+    public static String calculateExpression(String[] args) {
+        // PARSE
+        RawOperationParser parser = new RawOperationParser(args);
         try {
-            // PARSE
-            RawOperationParser parser = new RawOperationParser(args);
-            OldPound op_1 = parser.parseLeftPound();
-            OldPound op_2 = parser.parseRightPound();
-            OfpArithmeticEnum operator = parser.parseOperator();
-            // SETUP OPERATION
-            OfpBasicArithmetic basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator);
-            OfpOperation operation = new OfpOperation(op_1, op_2, basicArithmetic);
+            parser.parse();
+            OfpArithmeticEnum operator = parser.getOperator();
+            OfpBasicArithmetic basicArithmetic;
+            if (operator == OfpArithmeticEnum.DIFF || operator == OfpArithmeticEnum.SUM) {
+                basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, parser.getLeftOperation(), parser.getRightOperationPound());
+            } else {
+                basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, parser.getLeftOperation(), parser.getRightOperationInteger());
+            }
+            OfpOperation operation = new OfpOperation(basicArithmetic);
             // CALCULATE
             OldPound result = operation.calculate();
-            System.out.println(result.toString());
+            return result.toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            return e.getMessage();
         }
     }
 
