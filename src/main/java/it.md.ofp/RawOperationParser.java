@@ -3,6 +3,10 @@ package it.md.ofp;
 import it.md.ofp.basicArithmetic.OfpArithmeticEnum;
 import lombok.Getter;
 
+/**
+ * MISSION: parse standard input or String[] input.
+ * Expected input: {Xp, Ys, Zd, [*|/], K,} || {Xp, Ys, Zd, [+|-], Ap, Bs, Cd}
+ */
 class RawOperationParser {
 
     @Getter private String[] rawOperation;
@@ -15,6 +19,12 @@ class RawOperationParser {
         this.rawOperation = rawOperation;
     }
 
+    /**
+     * Expected to parse "Xp Ys Zd [*|/] K" or "Xp Ys Zd [+|-] Ap Bs Cd" raw expression.
+     * Set attributes operator, leftOperation, rightOperationPound || rightOperationInt.
+     * Right operation depends on the operation.
+     * @throws Exception if given expression is malformed
+     */
     void parse() throws Exception {
         validateRawOperationLength();
         parseOperator();
