@@ -4,14 +4,14 @@ import it.md.ofp.basicArithmetic.BasicArithmeticFactory;
 import it.md.ofp.basicArithmetic.OfpArithmeticEnum;
 import it.md.ofp.basicArithmetic.OfpBasicArithmetic;
 
-public class OldFashionPound {
+public class PriceArithmetic {
 
     public static void main(String[] args) {
-        String result = calculateExpression(args);
+        String result = calculateExpressionFromStandardInput(args);
         System.out.println(result);
     }
 
-    public static String calculateExpression(String[] args) {
+    public static String calculateExpressionFromStandardInput(String[] args) {
         // PARSE
         RawOperationParser parser = new RawOperationParser(args);
         try {
@@ -30,6 +30,18 @@ public class OldFashionPound {
         } catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    public static OldPound calc(OfpArithmeticEnum operator, OldPound op_1, OldPound op_2) throws Exception {
+        OfpBasicArithmetic basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
+        OfpOperation operation = new OfpOperation(basicArithmetic);
+        return operation.calculate();
+    }
+
+    public static OldPound calc(OfpArithmeticEnum operator, OldPound op_1, int op_2) throws Exception {
+        OfpBasicArithmetic basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
+        OfpOperation operation = new OfpOperation(basicArithmetic);
+        return operation.calculate();
     }
 
 }
