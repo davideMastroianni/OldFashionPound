@@ -29,7 +29,13 @@ Example DIVISION:
 Another Example DIVISION          
 * 18p 16s 1d / 15 = 1p 5s 0d (1s 1d) 
 
-## Usage
+## Usage 
 
+```bash
+$ java -jar path/to/OldFashionPound-X.X.X.jar [expression]
+```
 
+Expression must follow one of this rule:
+* Xp Ys Zd [+|-] Ap Bs Cd
+* Xp Ys Zd [*|/] K 
 
