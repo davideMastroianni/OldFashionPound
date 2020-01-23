@@ -67,9 +67,8 @@ public class TestOfpBasicArithmetic {
         // VERIFY
         assertThat(result).isNotNull();
         assertThat(result.getPounds()).isEqualTo(2);
-        assertThat(result.getShillings()).isEqualTo(13);
-        assertThat(result.getPence()).isEqualTo(0);
-        assertThat(result.getRemainder().getPence()).isEqualTo(8);
+        assertThat(result.getShillings()).isEqualTo(12);
+        assertThat(result.getPence()).isEqualTo(4);
     }
 
     @Test
