@@ -23,9 +23,8 @@ public class PriceArithmetic {
             } else {
                 basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, parser.getLeftOperation(), parser.getRightOperationInteger());
             }
-            OfpOperation operation = new OfpOperation(basicArithmetic);
             // CALCULATE
-            OldPound result = operation.calculate();
+            OldPound result = basicArithmetic.calculate();
             return result.toString();
         } catch (Exception e) {
             return e.getMessage();
@@ -34,14 +33,12 @@ public class PriceArithmetic {
 
     public static OldPound calc(OfpArithmeticEnum operator, OldPound op_1, OldPound op_2) throws Exception {
         OfpBasicArithmetic basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
-        OfpOperation operation = new OfpOperation(basicArithmetic);
-        return operation.calculate();
+        return basicArithmetic.calculate();
     }
 
     public static OldPound calc(OfpArithmeticEnum operator, OldPound op_1, int op_2) throws Exception {
         OfpBasicArithmetic basicArithmetic = BasicArithmeticFactory.getBasicArithmetic(operator, op_1, op_2);
-        OfpOperation operation = new OfpOperation(basicArithmetic);
-        return operation.calculate();
+        return basicArithmetic.calculate();
     }
 
 }
