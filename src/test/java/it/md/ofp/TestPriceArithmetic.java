@@ -4,14 +4,14 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.Test;
 
 
-public class TestOldFashionPound {
+public class TestPriceArithmetic {
 
     @Test
     public void calculateExpression_shouldSum_withSumExpression() {
         // SETUP
         String[] rawExpression = {"5p", "17s", "8d", "+", "3p", "4s", "10d"};
         // ACT
-        String result = OldFashionPound.calculateExpression(rawExpression);
+        String result = PriceArithmetic.calculateExpressionFromStandardInput(rawExpression);
         // VERIFY
         assertThat(result).isEqualTo("9p 2s 6d");
     }
@@ -21,7 +21,7 @@ public class TestOldFashionPound {
         // SETUP
         String[] rawExpression = {"5p", "17s", "8d", "-", "3p", "4s", "10d"};
         // ACT
-        String result = OldFashionPound.calculateExpression(rawExpression);
+        String result = PriceArithmetic.calculateExpressionFromStandardInput(rawExpression);
         // VERIFY
         assertThat(result).isEqualTo("2p 12s 10d");
     }
@@ -31,7 +31,7 @@ public class TestOldFashionPound {
         // SETUP
         String[] rawExpression = {"5p", "17s", "8d", "*", "2"};
         // ACT
-        String result = OldFashionPound.calculateExpression(rawExpression);
+        String result = PriceArithmetic.calculateExpressionFromStandardInput(rawExpression);
         // VERIFY
         assertThat(result).isEqualTo("11p 15s 4d");
     }
@@ -41,9 +41,9 @@ public class TestOldFashionPound {
         // SETUP
         String[] rawExpression = {"5p", "17s", "8d", "/", "3"};
         // ACT
-        String result = OldFashionPound.calculateExpression(rawExpression);
+        String result = PriceArithmetic.calculateExpressionFromStandardInput(rawExpression);
         // VERIFY
-        assertThat(result).isEqualTo("1p 19s 2d");
+        assertThat(result).isEqualTo("1p 19s 2d (2d)");
     }
 
 
