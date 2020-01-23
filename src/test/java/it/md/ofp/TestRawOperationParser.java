@@ -94,11 +94,11 @@ public class TestRawOperationParser {
     @Test
     public void parse_shouldThrowException_withSum_withOldPoundAndInt() {
         // SETUP
-        String[] rawOperation = {"5p", "17s", "8d", "*", "10"};
+        String[] rawOperation = {"5p", "17s", "8d", "+", "10"};
         RawOperationParser sut = new RawOperationParser(rawOperation);
         // ACT & VERIFY
         assertThatThrownBy(sut::parse)
                 .isInstanceOf(Exception.class)
-                .hasMessage("Raw operation is malformed for operator / and *. It required to be in this form \"Xp Ys Zd [*|/] K\"");
+                .hasMessage("Raw operation is malformed for operator / and *. It required to be in this form \"Xp Ys Zd [+|-] Ap Bs Cd\"");
     }
 }
